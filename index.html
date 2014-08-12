@@ -1,86 +1,84 @@
-<!DOCTYPE html>
- 
-<html>
- 
+<!DOCTYPE html> 
+<html lang="de">
 <head>
-	<title>Beispiel HTML5 Grundgerüst - www.html-seminar.de</title>
-	<meta charset="UTF-8" />
-	<meta name="description" content="Kurzbeschreibung" />
-	
-	<!--
-	<link rel="stylesheet" href="http://code.jquery.com/mobile/1.4.3/jquery.mobile-1.4.3.min.css" />
-	-->
-	<link rel="stylesheet" href="jquery.mobile-1.4.3.min.css" />
-	<!--
-	<script src="http://code.jquery.com/jquery-1.11.1.min.js"></script>
-	-->
-	<script src="jquery-1.11.1.min.js"></script>
-	
-	<!--
-	<script src="http://code.jquery.com/mobile/1.4.3/jquery.mobile-1.4.3.min.js"></script>
-	-->
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Audio Studio Ztibol</title>
+	<link rel="stylesheet" href="jquery.mobile-1.4.3.min.css">
+	<script src="jquery.js"></script>
+	<script src="_assets/js/index.js"></script>
 	<script src="jquery.mobile-1.4.3.min.js"></script>
+<!--
+	<link rel="shortcut icon" href="favicon.ico">
+    	<link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Open+Sans:300,400,700">
 	
-	
-	<script>
-			/* Hier der jQuery-Code */
-			
-		
-		//alert($('slider-2').attr('value'));
-		function set_slider() {
-			$("#slider-2").val("20");
-			$("#flip-1").val("on");
-			
-			//alert("Set Slider");
-			$("#slider-2").slider({
-				orientation: "vertical",
-				min: 0,
-				max: 150,
-				value: 30,
-			});
-			//$("#slider-2").slider("refresh");
-			$("#flip-1").slider("refresh");
-			$("#slider-2").slider("refresh");
-		}
-		
-	
-	
+	<link rel="stylesheet" href="_assets/css/jqm-demos.css">   
+	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.0/jquery.min.js"></script>
+	<script src="jquery.js"></script>
+	<script src="_assets/js/index.js"></script>
+	<script src="jquery.mobile-1.4.3.min.js"></script>
+    <style id="full-width-slider">
+        /* Hide the number input */
+        .full-width-slider input {
+            display: none;
+        }
+        .full-width-slider .ui-slider-track {
+            margin-left: 15px;
+        }
+    </style>
+-->
+	<script type="text/javascript">
+	function SendValue(event){
+	var volume = $( "#slider-2" ).val();
+	$.ajax({
+		url: "php/volume.php",
+		data: {value: volume},
+		datatype: "json",
+		type: "POST",
+		});
+	var volume = $( "#slider-2" ).val();
+//	alert("Volume = " + volume);
+	}
+	function set_volume() {
+		$("#slider-2").val("20");
+		$("#flip-1").val("on");
+		$("#flip-1").slider("refresh");
+		$("#slider-2").slider("refresh");
+	}
 	</script>
-</head>
- 
-<body onload="set_slider()">
- 
- <a href="info.php">PHP-Info</a>
- 
- <form>
-    <label for="slider-2">Volume</label>
-    <input name="slider-2" id="slider-2" data-highlight="true" min="0" max="100" value="50" type="range" onchange="SetValue()">
-</form>
+</head> 
+<body onload="set_volume()">
 
-<form>
-    <label for="flip-1">Power ON/OFF</label>
-    <select id="flip-1" name="flip-1" data-role="slider">
-        <option value="off">OFF</option>
-        <option value="on">ON</option>
-    </select>
-</form>
+<div data-role="page" id="home">
+<div data-role="header">
+	<h3> Endverst&auml;rker </h3>
 
-<a href="javascript:showarray()">Array anzeigen</a>
+</div>
+<div data-role="content" style="background-color:silver;">
 
-<input type="password" size="10" value="" onchange="testekennwortqualitaet(this.value)" />
-<span id="sicherheitshinweise">hier kommt dann der AJAX-Inhalt</span>
+	<form>
+	    <label for="slider-2">Volume</label>
+	    <input name="slider-2" id="slider-2" data-highlight="true" min="0" max="255" value="100" type="range" onchange ="SendValue(event)">
+	</form>
 
-<h1>jQuery Beispiel: einbinden und erster Befehl</h1>
+	<p>
+	</p>
+	</br>
+	</br>
+	</br>
+	</br>
+	<form>
+	    <label for="flip-1">Power ON/OFF</label>
+	    <select id="flip-1" name="flip-1" data-role="slider">
+		<option value="off">OFF</option>
+		<option value="on">ON</option>
+	    </select>
+	</form>
+</div>
+<div data-role="footer">
+ <h4>Ztibol (c)</h4>
+</div>
 
-<a href="http://www.html-seminar.de/" title="HTML, CSS u. jQuery lernen"> http://www.HTML-Seminar.de</a>
-
-
-<input type="button" value="Slider setzen" onclick="set_slider()">
-
-<input type="text" name="date" id="date">
-<form>
-	<input data-role="date" type="text">
-<form>
- 
 </body>
 </html>
+
