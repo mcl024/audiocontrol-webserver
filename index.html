@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+ 
+<html>
+ 
+<head>
+	<title>Beispiel HTML5 Grundgerüst - www.html-seminar.de</title>
+	<meta charset="UTF-8" />
+	<meta name="description" content="Kurzbeschreibung" />
+	
+	<!--
+	<link rel="stylesheet" href="http://code.jquery.com/mobile/1.4.3/jquery.mobile-1.4.3.min.css" />
+	-->
+	<link rel="stylesheet" href="jquery.mobile-1.4.3.min.css" />
+	<!--
+	<script src="http://code.jquery.com/jquery-1.11.1.min.js"></script>
+	-->
+	<script src="jquery-1.11.1.min.js"></script>
+	
+	<!--
+	<script src="http://code.jquery.com/mobile/1.4.3/jquery.mobile-1.4.3.min.js"></script>
+	-->
+	<script src="jquery.mobile-1.4.3.min.js"></script>
+	
+	
+	<script>
+			/* Hier der jQuery-Code */
+			
+		
+		//alert($('slider-2').attr('value'));
+		function set_slider() {
+			$("#slider-2").val("20");
+			$("#flip-1").val("on");
+			
+			//alert("Set Slider");
+			$("#slider-2").slider({
+				orientation: "vertical",
+				min: 0,
+				max: 150,
+				value: 30,
+			});
+			//$("#slider-2").slider("refresh");
+			$("#flip-1").slider("refresh");
+			$("#slider-2").slider("refresh");
+		}
+		
+	
+	
+	</script>
+</head>
+ 
+<body onload="set_slider()">
+ 
+ <a href="info.php">PHP-Info</a>
+ 
+ <form>
+    <label for="slider-2">Volume</label>
+    <input name="slider-2" id="slider-2" data-highlight="true" min="0" max="100" value="50" type="range" onchange="SetValue()">
+</form>
+
+<form>
+    <label for="flip-1">Power ON/OFF</label>
+    <select id="flip-1" name="flip-1" data-role="slider">
+        <option value="off">OFF</option>
+        <option value="on">ON</option>
+    </select>
+</form>
+
+<a href="javascript:showarray()">Array anzeigen</a>
+
+<input type="password" size="10" value="" onchange="testekennwortqualitaet(this.value)" />
+<span id="sicherheitshinweise">hier kommt dann der AJAX-Inhalt</span>
+
+<h1>jQuery Beispiel: einbinden und erster Befehl</h1>
+
+<a href="http://www.html-seminar.de/" title="HTML, CSS u. jQuery lernen"> http://www.HTML-Seminar.de</a>
+
+
+<input type="button" value="Slider setzen" onclick="set_slider()">
+
+<input type="text" name="date" id="date">
+<form>
+	<input data-role="date" type="text">
+<form>
+ 
+</body>
+</html>
