@@ -39,15 +39,25 @@
 	var volume = $( "#slider-2" ).val();
 //	alert("Volume = " + volume);
 	}
+	function get_value() {
+	$.ajax({
+		url: "php/get_value.php",
+		type: "POST",
+		data: {action: 'get_volume'},
+		success: function(data) { set_volume(data); }
+	});
+	}
+	
 	function set_volume() {
-		$("#slider-2").val("20");
-		$("#flip-1").val("on");
-		$("#flip-1").slider("refresh");
+		var volume = $.parseJSON(data);
+		$("#slider-2").val(volume);
+		//$("#flip-1").val("on");
+		//$("#flip-1").slider("refresh");
 		$("#slider-2").slider("refresh");
 	}
 	</script>
 </head> 
-<body onload="set_volume()">
+<body onload="get_value()">
 
 <div data-role="page" id="home">
 <div data-role="header">
