@@ -60,10 +60,18 @@
 <body onload="get_value()">
 
 <div data-role="page" id="home">
-<div data-role="header">
-	<h3> Endverst&auml;rker </h3>
-
-</div>
+<div data-role="header" data-them="b">
+	<h3><img src="images/Mischpult.jpg" border="0" width="100%" hight="5%" padding-right: 2px;">Endverst&auml;rker </h3>
+	
+    <a href="#" data-icon="gear" class="ui-btn-right">Options</a>
+    <div data-role="navbar">
+        <ul>
+            <li><a href="#" data-icon="grid">Summary</a></li>
+			<li><a href="#" data-icon="star" class="ui-btn-active">Favs</a></li>
+			<li><a href="#" data-icon="gear">Setup</a></li>
+        </ul>
+    </div><!-- /navbar -->
+</div><!-- /header -->
 <div data-role="content" style="background-color:silver;">
 
 	<form>
